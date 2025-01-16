@@ -9,6 +9,32 @@ using namespace std;
 
 int main()
 {
+	// TESTING WITHOUT VISUAL STUDIO
+
+	// Arrange - seting up what we need to test
+	int expectedWinnings = 1000000000;
+	vector<int> numbers = { 1,2,3,4,5,6 };
+	vector<int> winningNumbers = { 1,2,3,4,5,6 };
+
+	PowerBallTicket ticket = PowerBallTicket(numbers);
+	PowerBallTicket winningTicketTest = PowerBallTicket(winningNumbers);
+
+	// Act - calling the code we're testing and getting results
+	int actualWinnings = ticket.getWinnings(winningTicketTest);
+
+	// Assert - did we get what we expect
+	if (expectedWinnings == actualWinnings) {
+		cout << "Jackpot test PASSES" << endl;
+	}
+	else {
+		cout << "Jackpot test FAILS" << endl;
+	}
+
+
+
+
+
+
 	cout << "Hello World!" << endl;
 
 	PowerBallTicket winningTicket;
