@@ -1,6 +1,9 @@
 using namespace std;
 
 #include <iostream>
+#include <iomanip>
+#include <locale>
+#include <format> // C++20
 
 #include "PowerBallTicket.h"
 
@@ -35,6 +38,17 @@ int main()
 		totalWon += newTicket.getWinnings(winningTicket);
 
 	}
+	// used UMGPT
+	// prompt: how do you make output in c++ have digit seperators and no decimals
+	// prompt: use the C++11 introduced a new feature called the thousands separator,
+
+	// Use std::locale to specify the locale with digit separator
+	//std::locale::global(std::locale("en_US.UTF-8"));
+	//std::cout.imbue(std::locale());
+
+	// Print number with thousands separator
+	//std::cout << std::format("{:L}", number) << std::endl;
+
 
 	cout << "You spent $" << totalSpent << endl;
 	cout << "You won $" << totalWon << endl;
