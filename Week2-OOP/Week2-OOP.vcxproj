@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="Week2-OOP.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chair.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
