@@ -12,7 +12,7 @@ private:
 public:
 	Chair(string color, int heightInCM) {
 		this->color = color;
-		this->heightInCM = heightInCM;
+		setHeightInCM(heightInCM);
 	}
 
 	/*
@@ -46,10 +46,10 @@ public:
 	}
 
 	void setHeightInCM(int newHeightInCM) {
-		if (newHeightInCM > 0) {
-			heightInCM = newHeightInCM;
+		if (newHeightInCM < 0) {
+			throw invalid_argument("height can't be negative");
 		}
-		// TODO - exceptions
+		heightInCM = newHeightInCM;
 	}
 };
 
