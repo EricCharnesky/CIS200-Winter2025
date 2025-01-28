@@ -130,7 +130,9 @@
     <ClCompile Include="Week3-ExceptionsAndPoitners.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assignment.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

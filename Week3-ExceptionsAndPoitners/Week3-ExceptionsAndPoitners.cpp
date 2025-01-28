@@ -1,11 +1,45 @@
 
 #include <iostream>
 #include "Header.h"
+#include "Student.h"
 
 using namespace std;
 
 int main()
 {
+    //for (int studentNumber = 0; studentNumber < 500; studentNumber++) {
+        Student* student = new Student();
+        //delete student;
+        // 
+        student->setName("Eric");
+
+        
+
+        Assignment assignment;
+        assignment.setName("Test assignment");
+        student->addAssignemnt(assignment);
+
+        Assignment* assignemnts = student->getAssignements();
+        cout << assignemnts[0].getName() << endl;
+
+
+        Student* anotherStudent = new Student(*student);
+        anotherStudent->setName("Test");
+
+        assignemnts = anotherStudent->getAssignements();
+        cout << "student name: " << student->getName() << endl;
+        cout << "another student name: " << anotherStudent->getName() << endl;
+        cout << assignemnts[0].getName() << endl;
+
+
+        Student thirdStudent;
+        
+        thirdStudent = *anotherStudent;
+
+
+    //}
+
+
     Rectangle smallRectangle(2, 3);
     Rectangle* bigRectangle = new Rectangle(5, 10);
     cout << "length of small rectange " 
