@@ -1,14 +1,15 @@
 
 #include <iostream>
 #include "Square.h"
+#include "Triangle.h"
 
 using namespace std;
 
-void printRectangleDetails(Rectangle* rectangle) {
+void printPolygonDetails(Polygon* polygon) {
 
-    rectangle->setHeight(1);
-    cout << "Area: " << rectangle->getArea() << endl;
-    cout << "Perimeter: " << rectangle->getPerimeter() << endl;
+    polygon->setSideLength(1, 1);
+    cout << "Area: " << polygon->getArea() << endl;
+    cout << "Perimeter: " << polygon->getPerimeter() << endl;
 }
 
 int main()
@@ -19,6 +20,23 @@ int main()
 
     Rectangle* largeRectangle = new Rectangle(10, 20);
 
-    printRectangleDetails(largeRectangle);
-    printRectangleDetails(smallSquare);
+    printPolygonDetails(largeRectangle);
+    printPolygonDetails(smallSquare);
+
+    // arrange
+    Triangle* triangle = new Triangle();
+    triangle->setSideLength(0, 3);
+    triangle->setSideLength(1, 4);
+    triangle->setSideLength(2, 5);
+    double expectedArea = 6;
+
+    // act
+    cout << "Area of our 3,4,5 triangle is: " << triangle->getArea() << endl;
+    printPolygonDetails(triangle);
+    double actualArea = triangle->getArea();
+
+    // assert
+    if (expectedArea != actualArea) {
+        cout << "TEST FAILED - area doesn't match" << endl;
+    }
 }
