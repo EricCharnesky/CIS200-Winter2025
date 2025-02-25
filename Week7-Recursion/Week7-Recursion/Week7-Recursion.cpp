@@ -72,23 +72,48 @@ int badFib(int nth) {
     return badFib(nth - 1) + badFib(nth - 2);
 }
 
+char mazeSpace() {
+    if (rand() % 3 == 0) {
+        return 'X';
+    }
+    else {
+        return ' ';
+    }
+}
+
 int main()
 {
     vector<vector<char>> maze = {
         { 'S', 'X', 'X', 'X', ' ' },
         { ' ', ' ', ' ', ' ', ' ' },
         { ' ', 'X', ' ', 'X', ' ' },
-        { ' ', 'X', ' ', 'X', 'X' },
-        { ' ', 'X', ' ', ' ', 'E' },
+        { ' ', 'X', ' ', 'X', 'E' },
+        { ' ', 'X', ' ', ' ', ' ' },
 
     };
 
-    MazeSovler solver(maze);
-    solver.solve();
+   
 
+    
 
+    for (int number = 0; number < 10; number++) {
+        
 
-    for (int number = 0; number < 45; number++) {
-       // cout << number << "th: " << iterativeFib(number) << endl;
+        maze = vector<vector<char>>();
+        int rows = rand() % 7 + 4;
+        int columns = rand() % 7 + 4;
+
+        for (int rowIndex = 0; rowIndex < rows; rowIndex++ ) {
+            maze.push_back(vector<char>());
+            for (int columnIndex = 0; columnIndex < columns; columnIndex++ ) {
+                maze.at(rowIndex).push_back(mazeSpace());
+            }
+        }
+
+        maze.at(0).at(0) = 'S';
+        maze.at(rows - 1).at(columns - 1) = 'E';
+
+        MazeSovler solver(maze);
+        solver.solve();
    }
 }

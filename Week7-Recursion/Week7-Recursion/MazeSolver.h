@@ -7,6 +7,9 @@ using namespace std;
 class MazeSovler {
 private:
 	vector<vector<char>> maze;
+	int numberOfMoves;
+	int numberOfMovesUntilSolution;
+	string solution;
 
 	bool canGo(int rowIndex, int columnIndex) {
 		return !(rowIndex < 0 || rowIndex >= maze.size() ||
@@ -21,9 +24,13 @@ private:
 
 		// BASE CASE
 		if (maze.at(rowIndex).at(columnIndex) == 'E') {
-			print();
+			if (numberOfMoves < numberOfMovesUntilSolution) {
+				numberOfMovesUntilSolution = numberOfMoves;
+				solution = toString();
+			}
 		}
 		else {
+			numberOfMoves++;
 			maze.at(rowIndex).at(columnIndex) = '.';
 
 			// up
@@ -48,25 +55,41 @@ private:
 
 			// UNDO
 			maze.at(rowIndex).at(columnIndex) = ' ';
+			numberOfMoves--;
 		}
 	}
 
 public:
 	MazeSovler(vector<vector<char>> maze){
 		this->maze = maze;
+		numberOfMoves = 0;
+		numberOfMovesUntilSolution = INT_MAX;
+		solution = "";
 	}
 
-	void print() {
+	string toString() {
+		string result = "";
 		for (vector<char> row : maze) {
 			for (char space : row) {
-				cout << space;
+				result += space;
 			}
-			cout << endl;
+			result += '\n';
 		}
+		return result;
 	}
 
 	void solve() {
 		// TODO - Find Start
 		solve(0, 0);
+		if (numberOfMovesUntilSolution < INT_MAX) {
+			cout << solution;
+			cout << "Solved in " << numberOfMovesUntilSolution << " moves!" << endl;
+
+		}
+		else {
+			cout << toString() << endl;
+			cout << "no solution found!" << endl;
+		}
+		cout << endl;
 	}
 };
