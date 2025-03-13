@@ -130,6 +130,7 @@
     <ClCompile Include="Week10-LinkedLists.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CircularDoublyLinkedList.h" />
     <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="SinglyLinkedList.h" />
   </ItemGroup>
