@@ -156,6 +156,8 @@ public:
 template <typename T>
 class LinkedQueue {
 
+private:
+
 	template <typename T>
 	class Node {
 	public:
@@ -169,8 +171,6 @@ class LinkedQueue {
 			this->data = data;
 		}
 	};
-
-private:
 	
 	Node<T>* frontNode;
 	Node<T>* backNode;
@@ -189,8 +189,11 @@ public:
 			backNode = new Node<T>(item);
 			frontNode = backNode;
 		}
-		Node<T>* newBack = new Node<T>(data, nullptr, backNode);
-		backNode = newBack;
+		else {
+			Node<T>* newBack = new Node<T>(item, nullptr, backNode);
+			backNode->next = newBack;
+			backNode = newBack;
+		}
 
 		numberOfItems++;
 	}
